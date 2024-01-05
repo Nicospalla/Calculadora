@@ -34,6 +34,53 @@ namespace Calculadora
             
         }
 
+
+        private void btnSumar_Click(object sender, EventArgs e)
+        {
+            bandera = 1;
+            intercambio();
+        }
+
+        private void btnResta_Click(object sender, EventArgs e)
+        {
+            bandera = 2;
+            intercambio();
+        }
+        private void btnMulti_Click(object sender, EventArgs e)
+        {
+            bandera = 3; intercambio();
+        }
+
+        private void btnDiv_Click(object sender, EventArgs e)
+        {
+            bandera = 4; intercambio();
+        }
+        private void intercambio()
+        {
+            numeroA = int.Parse(lblResultado.Text);
+            numeroB = 0;
+            lblResultado.Text = numeroB.ToString();
+        }
+        private void btnIgual_Click(object sender, EventArgs e)
+        {
+            numeroB = int.Parse(lblResultado.Text);
+            switch (bandera)
+            {
+                case 1:
+                    lblResultado.Text = (numeroA + numeroB).ToString();
+                    break;
+                case 2: 
+                    lblResultado.Text = (numeroA - numeroB).ToString();
+                    break;
+                case 3:
+                    lblResultado.Text = (numeroA * numeroB).ToString();
+                    break;
+                case 4:
+                    lblResultado.Text = (numeroA / numeroB).ToString();
+                    break;
+            }
+        }
+
         private void btn1_Click(object sender, EventArgs e)
         {
             lblResultado.Text += 1;
@@ -45,25 +92,67 @@ namespace Calculadora
             lblResultado.Text += 2;
             refreshPantalla();
         }
-
-        private void btnSumar_Click(object sender, EventArgs e)
+        private void btn3_Click(object sender, EventArgs e)
         {
-            bandera = 1;
-            numeroA =int.Parse(lblResultado.Text);
+            lblResultado.Text += 3;
+            refreshPantalla();
+        }
+        private void btn4_Click(object sender, EventArgs e)
+        {
+            lblResultado.Text += 4;
+            refreshPantalla();
+        }
+
+        private void btn5_Click(object sender, EventArgs e)
+        {
+            lblResultado.Text += 5;
+            refreshPantalla();
+        }
+
+        private void btn6_Click(object sender, EventArgs e)
+        {
+            lblResultado.Text += 6;
+            refreshPantalla();
+        }
+
+        private void btn7_Click(object sender, EventArgs e)
+        {
+            lblResultado.Text += 7;
+            refreshPantalla();
+        }
+
+        private void btn8_Click(object sender, EventArgs e)
+        {
+            lblResultado.Text += 8;
+            refreshPantalla();
+        }
+
+        private void btn9_Click(object sender, EventArgs e)
+        {
+            lblResultado.Text += 9;
+            refreshPantalla();
+        }
+
+        private void btnBorraTodo_Click(object sender, EventArgs e)
+        {
+            numeroA = 0;
             numeroB = 0;
-            lblResultado.Text = numeroB.ToString();
+            lblResultado.Text = "0";
         }
 
-        private void btnIgual_Click(object sender, EventArgs e)
+        private void btnBorra_Click(object sender, EventArgs e)
         {
-            numeroB = int.Parse(lblResultado.Text);
-            switch (bandera)
+            if (numeroA != 0) 
             {
-                case 1:
-                    lblResultado.Text = (numeroA + numeroB).ToString();
-                    break;
-
+                numeroB = 0;
             }
+            else
+            {
+                numeroA = 0;
+            }
+            lblResultado.Text = "0";
         }
+
+
     }
 }
