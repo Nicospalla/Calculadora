@@ -24,7 +24,7 @@ namespace Calculadora
         private void refreshPantalla()
         {
             var renovado = lblResultado.Text;
-            if (lblResultado.Text.StartsWith("0"))
+            if (lblResultado.Text.StartsWith("0") && !lblResultado.Text.Contains(","))
             {
                 char[] numeros = renovado.ToCharArray();
                 renovado = new string(numeros,1,numeros.Length -1);
@@ -57,13 +57,13 @@ namespace Calculadora
         }
         private void intercambio()
         {
-            numeroA = int.Parse(lblResultado.Text);
+            numeroA = float.Parse(lblResultado.Text);
             numeroB = 0;
             lblResultado.Text = numeroB.ToString();
         }
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            numeroB = int.Parse(lblResultado.Text);
+            numeroB = float.Parse(lblResultado.Text);
             switch (bandera)
             {
                 case 1:
@@ -132,6 +132,13 @@ namespace Calculadora
             lblResultado.Text += 9;
             refreshPantalla();
         }
+        private void btn0_Click(object sender, EventArgs e)
+        {
+            lblResultado.Text += 0;
+            refreshPantalla();
+        }
+
+
 
         private void btnBorraTodo_Click(object sender, EventArgs e)
         {
@@ -153,6 +160,12 @@ namespace Calculadora
             lblResultado.Text = "0";
         }
 
-
+        private void btnPunto_Click(object sender, EventArgs e)
+        {
+            if(lblResultado.Text.Length > 0 && !lblResultado.Text.Contains("."))
+            {
+                lblResultado.Text += ",";
+            }
+        }
     }
 }
